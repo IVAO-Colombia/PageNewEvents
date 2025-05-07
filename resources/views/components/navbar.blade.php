@@ -102,9 +102,9 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="#"
+                        {{-- <li><a href="#"
                                 class="block py-2 px-3 md:p-0 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 poppins-medium">Estadística</a>
-                        </li>
+                        </li> --}}
 
                         <!-- 👇 Botones visibles solo en menú hamburguesa -->
                         <li class="md:hidden mt-3">

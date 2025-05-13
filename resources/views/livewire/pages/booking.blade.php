@@ -9,7 +9,7 @@
                 <div class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm -800 md:p-6">
                   <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
                     <div class="h-14 w-36 flex items-center justify-center">
-                        <img class="max-h-full max-w-full object-contain" src="https://static.avianca.com/media/cr2j1dir/logoavianca-newbrand-rojo-1.svg" alt="Logo aerolínea" />
+                        <img class="max-h-full max-w-full object-contain" src="{{$airline_logo}}" alt="Logo aerolínea" />
                       </div>
                     <div class="flex items-center justify-between md:order-3 md:justify-end">
                       <div class="text-end md:order-4 md:w-32">

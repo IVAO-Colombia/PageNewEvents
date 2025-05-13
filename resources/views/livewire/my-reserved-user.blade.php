@@ -79,51 +79,55 @@
                 </div>
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
-                    <h2 class="text-4xl font-bold mx-3"></h2>
+                    <h2 class="text-4xl font-bold mx-3">{{ $selectedBooking['fligth']['IcaoAirline'] ?? '' }}{{ $selectedBooking['fligth']['flight_number'] ?? 'N/A' }}</h2>
                     <br>
+                    @if(isset($selectedBooking['fligth']) && $selectedBooking['fligth']['GateArrival'] == NULL)
                     <ol class="relative border-s border-gray-200  ms-3.5 mb-4 md:mb-5">                  
-                        <li class="mb-10 ms-8">            
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3.5 ring-8 ring-white">
-                                <svg class="w-2.5 h-2.5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M12 2a1 1 0 0 1 .932.638l7 18a1 1 0 0 1-1.326 1.281L13 19.517V13a1 1 0 1 0-2 0v6.517l-5.606 2.402a1 1 0 0 1-1.326-1.281l7-18A1 1 0 0 1 12 2Z" clip-rule="evenodd"/>
-                                  </svg>  
-                            </span>
-                            @if(isset($selectedBooking['fligth']) && $selectedBooking['fligth']['GateDeparture'] == null)
-                            <h3 class="flex items-start mb-1 text-lg font-semibold text-gray-900">{{$selectedBooking['fligth']['departure_airport']}}</h3>
-                            <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Puerta de LLegada: Sin Informacion </time>
-                            <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Hora de llegada: Desconocida</time>
-                            @else
-                            <h3 class="flex items-start mb-1 text-lg font-semibold text-gray-900">{{ $selectedBooking['fligth']['departure_airport'] }}</h3>
-                            <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Puerta de Salida: <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">{{ $selectedBooking['fligth']['GateDeparture'] ?? '[]' }}</span></time>
-                            <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Hora de Salida: {{ \Carbon\Carbon::parse($selectedBooking['fligth']['departure_time'])->format('H:i:s') ?? '00:00:00' }}</time>
-                            @endif
-                        </li>
-                        <li class="mb-10 ms-8">
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3.5 ring-8 ring-white">
-                                <svg class="w-2.5 h-2.5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z" clip-rule="evenodd"/>
-                                  </svg>                                      
-                            </span>
-                            <h3 class="mb-1 text-lg font-semibold text-gray-900"></h3>
-                        </li>
-                        <li class="ms-8">
-                            <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3.5 ring-8 ring-white">
-                                <svg class="w-2.5 h-2.5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm5.757-1a1 1 0 1 0 0 2h8.486a1 1 0 1 0 0-2H7.757Z" clip-rule="evenodd"/>
-                                  </svg>                                      
-                            </span>
-                            @if(isset($selectedBooking['fligth']) && $selectedBooking['fligth']['GateArrival'] == null)
-                            <h3 class="mb-1 text-lg font-semibold text-gray-900">{{ $selectedBooking['fligth']['arrival_airport'] }}</h3>
-                            <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Puerta de LLegada: Sin Informacion </time>
-                            <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Hora de llegada: Desconocida</time>
-                            @else
-                            <h3 class="mb-1 text-lg font-semibold text-gray-900">{{ $selectedBooking['fligth']['arrival_airport'] }}</h3>
-                            <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Puerta de Llegada: <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">{{ $selectedBooking['fligth']['GateArrival'] ?? '[]' }}</span></time>
-                            <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Hora de Salida: {{ \Carbon\Carbon::parse($selectedBooking['fligth']['departure_time'])->format('H:i:s') ?? '00:00:00' }}</time>
-
-                            @endif
-                        </li>
-                    </ol>
+                      <li class="mb-10 ms-8">            
+                          <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3.5 ring-8 ring-white">
+                              <svg class="w-2.5 h-2.5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                  <path fill-rule="evenodd" d="M12 2a1 1 0 0 1 .932.638l7 18a1 1 0 0 1-1.326 1.281L13 19.517V13a1 1 0 1 0-2 0v6.517l-5.606 2.402a1 1 0 0 1-1.326-1.281l7-18A1 1 0 0 1 12 2Z" clip-rule="evenodd"/>
+                                </svg>  
+                          </span>
+                          <h3 class="flex items-start mb-1 text-lg font-semibold text-gray-900">{{$selectedBooking['fligth']['departure_airport']}}</h3>
+                          <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Puerta de Salida: <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">{{ $selectedBooking['fligth']['GateDeparture'] ?? '[]' }}</span> </time>
+                          <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Hora de Salida: {{ \Carbon\Carbon::parse($selectedBooking['fligth']['departure_time'])->format('H:i:s') ?? '00:00:00' }}</time>
+                      </li>
+                      <li class="ms-8">
+                          <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3.5 ring-8 ring-white">
+                              <svg class="w-2.5 h-2.5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                  <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm5.757-1a1 1 0 1 0 0 2h8.486a1 1 0 1 0 0-2H7.757Z" clip-rule="evenodd"/>
+                                </svg>                                      
+                          </span>
+                          <h3 class="mb-1 text-lg font-semibold text-gray-900">{{ $selectedBooking['fligth']['arrival_airport'] }}</h3>
+                          <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Puerta de LLegada: Sin Informacion </time>
+                          <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Hora de llegada: Desconocida</time>
+                      </li>
+                  </ol>
+                    @else
+                    <ol class="relative border-s border-gray-200  ms-3.5 mb-4 md:mb-5">                  
+                      <li class="mb-10 ms-8">            
+                          <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3.5 ring-8 ring-white">
+                              <svg class="w-2.5 h-2.5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                  <path fill-rule="evenodd" d="M12 2a1 1 0 0 1 .932.638l7 18a1 1 0 0 1-1.326 1.281L13 19.517V13a1 1 0 1 0-2 0v6.517l-5.606 2.402a1 1 0 0 1-1.326-1.281l7-18A1 1 0 0 1 12 2Z" clip-rule="evenodd"/>
+                                </svg>  
+                          </span>
+                          <h3 class="flex items-start mb-1 text-lg font-semibold text-gray-900">{{$selectedBooking['fligth']['departure_airport']}}</h3>
+                          <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Puerta de Salida: Sin Informacion </time>
+                          <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Hora de Salida:  {{ \Carbon\Carbon::parse($selectedBooking['fligth']['departure_time'])->format('H:i:s') ?? '00:00:00' }}</time>
+                      </li>
+                      <li class="ms-8">
+                          <span class="absolute flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full -start-3.5 ring-8 ring-white">
+                              <svg class="w-2.5 h-2.5 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                  <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm5.757-1a1 1 0 1 0 0 2h8.486a1 1 0 1 0 0-2H7.757Z" clip-rule="evenodd"/>
+                                </svg>                                      
+                          </span>
+                          <h3 class="mb-1 text-lg font-semibold text-gray-900">{{ $selectedBooking['fligth']['arrival_airport'] }}</h3>
+                          <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Puerta de LLegada: <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">{{ $selectedBooking['fligth']['GateArrival'] ?? '[]' }}</span> </time>
+                          <time class="block mb-3 text-sm font-normal leading-none text-gray-500">Hora de llegada: Desconocida</time>
+                      </li>
+                  </ol>
+                    @endif
                 </div>
 
                 <div class="p-4 md:p-5 space-y-4">

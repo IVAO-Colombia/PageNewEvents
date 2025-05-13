@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Log;
+use App\Models\Airlines;
 
 class BookingPage extends Component
 {
@@ -36,7 +37,9 @@ class BookingPage extends Component
             abort(404);
         }
 
+
         return $fligth;
+        
     }
 
     public function submitBooking()
@@ -81,12 +84,20 @@ class BookingPage extends Component
 
     }
 
+    public function searchLogo($icao_fligth)
+    {
+
+        $airline = Airlines::where('icao', $icao_fligth)->first();
+        return $airline ? $airline->url : null;
+    }
+
     public function render()
     {
         return view('livewire.pages.booking',
             [
                 'user' => $this->user,
                 'fligth' => $this->fligth,
+                'airline_logo' => $this->searchLogo($this->fligth->IcaoAirline),  
             ]
         )
         ->layout('layouts.app');

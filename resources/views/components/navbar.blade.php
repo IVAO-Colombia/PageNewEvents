@@ -109,27 +109,33 @@
                         <!-- 👇 Botones visibles solo en menú hamburguesa -->
                         <li class="md:hidden mt-3">
                             @auth
-                            @if (Request::is('profile'))
-                            @livewire('buttom-logout')
+                                @if (Request::is('profile'))
+                                    @livewire('buttom-logout')
+                                @else
+                                    @if(Auth::user()->is_admin == 1)
+                                        <a type="button" href="{{ url('admin') }}"
+                                            class="block w-full py-2.5 px-5 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-100">
+                                            Panel de Control
+                                        </a>
+                                    @endif
+                                    <a type="button" href="{{ route('profile') }}"
+                                        class="block w-full py-2.5 px-5 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-100">
+                                        Ver Perfil
+                                    </a>
+                                @endif
                             @else
-                            <a type="button" href="{{ route('profile') }}"
-                                class="hidden md:inline-flex py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-700 focus:ring-4 focus:ring-gray-100">
-                                Ver Perfil
-                            </a>
-                            @endif
-                            @else
-                            <a type="button"
-                                class="hidden md:inline-flex text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center me-2 mb-2 cursosr-pointer"
-                                href="{{ route('login') }}">
-                                <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                                    <path fill-rule="evenodd"
-                                        d="M12 20a7.966 7.966 0 0 1-5.002-1.756v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Iniciar Sesión con IVAO
-                            </a>
-                            @endif
+                                <a type="button"
+                                    class="block w-full text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mb-2 cursor-pointer"
+                                    href="{{ route('login') }}">
+                                    <svg class="w-4 h-4 me-2 inline" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd"
+                                            d="M12 20a7.966 7.966 0 0 1-5.002-1.756v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Iniciar Sesión con IVAO
+                                </a>
+                            @endauth
                         </li>
                     </ul>
                 </div>

@@ -11,12 +11,13 @@ class IvaoAuthController extends Controller
 {
     public function redirectToIVAO()
     {
-        $query = http_build_query([
 
+        $scopes = 'profile configuration email';
+        $query = http_build_query([
             'client_id' => config('services.ivao.client_id'),
             'redirect_uri' => route('ivao.callback'),
             'response_type' => 'code',
-            'scope' => 'email',
+            'scope' => $scopes,
             'state' => 'xyz',
         ]);
 
@@ -59,6 +60,8 @@ class IvaoAuthController extends Controller
                 }
             }
         }
+
+        // dd($ivaoUser);
         // Crea o actualiza el usuario en tu DB
         $user = User::updateOrCreate(
             [

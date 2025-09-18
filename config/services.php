@@ -34,5 +34,10 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'ivao' => [
+        'client_id' => env('IVAO_CLIENT_ID'),
+        'client_secret' => env('IVAO_CLIENT_SECRET'),
+        'redirect' => env('IVAO_REDIRECT_URI'),
+    ],
 
 ];

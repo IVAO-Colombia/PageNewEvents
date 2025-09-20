@@ -7,7 +7,7 @@
     </div>
     <!-- Button Group -->
     <div class="flex items-center gap-x-1 lg:gap-x-2 py-1">
-      <div class="relative"> 
+      <div class="relative">
         <button type="button" id="translate-btn" class="size-9.5 relative flex justify-center items-center rounded-xl border border-white text-white hover:bg-white hover:text-black focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 transition cursor-pointer" aria-label="Change language">
           <span class="material-symbols-outlined">
           translate
@@ -18,7 +18,7 @@
             <a href="{{ route('language.switch', 'es') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Español</a>
         </div>
       </div>
-      <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-white text-white focus:outline-hidden transition disabled:opacity-50 cursor-pointer hover:bg-white hover:text-black" aria-label="Login">
+      <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-white text-white focus:outline-hidden transition disabled:opacity-50 cursor-pointer hover:bg-white hover:text-black nunito-sans-semibold" aria-label="Login">
         {{ __('Login') }}
       </button>
     </div>
@@ -28,7 +28,6 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Script loaded');
             const translateBtn = document.getElementById('translate-btn');
             const dropdown = document.getElementById('language-dropdown');
 

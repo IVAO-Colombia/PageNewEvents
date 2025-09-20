@@ -285,5 +285,19 @@
     "Whoops!": "¡Ups!",
     "Yes": "Sí",
     "You are receiving this email because we received a password reset request for your account.": "Ha recibido este mensaje porque se solicitó un restablecimiento de contraseña para su cuenta.",
-    "Your email address is unverified.": "Su dirección de correo electrónico no está verificada."
+    "Your email address is unverified.": "Su dirección de correo electrónico no está verificada.",
+    "News": "Noticias",
+    "News Description": "Manténgase informado con las últimas noticias y anuncios de IVAO Colombia.",
+    "CookiesPublishName": "Equipo de Desarrollo de Departamentos",
+    "CookiesPublishDate": "02 de Noviembre de 2025",
+    "CookiesTitle": "Aviso sobre el uso de datos y cookies",
+    "CookiesContentOne": "En IVAO Colombia, como división oficial de la red de la Organización Internacional de Aviación Virtual (IVAO), cumplimos con las normativas establecidas por la organización.",
+    "CookiesContentTwo": "Los datos de conexión, vuelos, participación en eventos y estadísticas de usuarios provienen directamente de la red IVAO. Estos datos se utilizan exclusivamente para fines operativos, estadísticos y de gestión de la división, en el marco de las normativas vigentes de IVAO.",
+    "CookiesContentThree": "Nuestro sitio web solo utiliza cookies técnicas esenciales, que son necesarias para garantizar el correcto funcionamiento de la plataforma (como iniciar sesión o ver contenido dinámico). Estas cookies no almacenan información personal con fines publicitarios. Si se implementan herramientas de análisis externas o servicios de terceros, se informará al usuario y se solicitará su consentimiento antes de la activación.",
+    "GDPR": "Lea más sobre el cumplimiento del RGPD de IVAO aquí.",
+    "Cookies":"¡Estamos usando cookies para mejorar su experiencia!",
+    "CookiesAccept":"Aceptar todas",
+    "CookiesManage":"Administrar cookies",
+    "CookiesDescription":"Al hacer clic en \"Aceptar todas\", usted acepta el uso de todas las cookies.",
+    "AirportImports": "Estos aeropuertos son parte de nuestras experiencias de eventos."
 }

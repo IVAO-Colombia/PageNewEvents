@@ -1,3 +1,19 @@
 {
-    "Title": "Events | IVAO CO"
+    "Title": "Events | IVAO CO",
+    "News": "News",
+    "News Description": "Discover news and updates about our events.",
+    "CookiesPublishName": "Departments Development Team",
+    "CookiesPublishDate": "November 02, 2025",
+    "CookiesTitle": "Notice on data use and cookies",
+    "CookiesContentOne": "At IVAO Colombia, as an official division of the International Virtual Aviation Organization (IVAO) network, we comply with the regulations established by the organization.",
+    "CookiesContentTwo": "Connection data, flights, event participation, and user statistics come directly from the IVAO network. This data is used exclusively for operational, statistical, and division management purposes, within the framework of current IVAO regulations.",
+    "CookiesContentThree": "Our website only uses essential technical cookies, which are necessary to ensure the proper functioning of the platform (such as logging in or viewing dynamic content). These cookies do not store personal information for advertising purposes.If external analysis tools or third-party services are implemented, the user will be informed and their consent will be requested before activation.",
+    "GDPR": "Read more about GDPR IVAO compliance here.",
+    "Cookies":"We are using cookies to improve your experience!",
+    "CookiesAccept":"Accept all",
+    "CookiesManage":"Manage cookies",
+    "CookiesDescription":"By clicking \"Accept all\", you agree to use of all cookies.",
+    "AirportImports": "These airports are part of our event experiences."
+
+
 }

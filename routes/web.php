@@ -8,6 +8,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/cookies-policy', function () {
+    return view('cookiespolicity');
+})->name('cookies.policy');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

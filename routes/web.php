@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use Illuminate\Support\Facades\App;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,5 +19,16 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/password', 'settings.password')->name('password.edit');
     Volt::route('settings/appearance', 'settings.appearance')->name('appearance.edit');
 });
+
+
+/** Language Switcher */
+Route::get('/language/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'es'])) {
+        session()->put('locale', $locale);
+        app()->setLocale($locale);
+        logger('Language switched to: ' . $locale);
+    }
+    return redirect()->back();
+})->name('language.switch');
 
 require __DIR__.'/auth.php';

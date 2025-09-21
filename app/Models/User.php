@@ -49,10 +49,16 @@ class User extends Authenticatable
      */
     public function initials(): string
     {
-        return Str::of($this->name)
+        return Str::of($this->fullName())
             ->explode(' ')
             ->take(2)
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
+    }
+
+    /** Name Complete */
+    public function fullName(): string
+    {
+        return "{$this->firstname} {$this->lastname}";
     }
 }

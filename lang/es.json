@@ -299,5 +299,6 @@
     "CookiesAccept":"Aceptar todas",
     "CookiesManage":"Administrar cookies",
     "CookiesDescription":"Al hacer clic en \"Aceptar todas\", usted acepta el uso de todas las cookies.",
-    "AirportImports": "Estos aeropuertos son parte de nuestras experiencias de eventos."
+    "AirportImports": "Estos aeropuertos son parte de nuestras experiencias de eventos.",
+    "EventsActive": "Eventos Disponibles"
 }

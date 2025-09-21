@@ -1,18 +1,59 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="light">
     <head>
         @include('partials.head')
+        <script>
+        (function () {
+            function isInternal(a){
+                if(!a) return false;
+                const href = a.getAttribute('href');
+                return href &&
+                       !href.startsWith('#') &&
+                       !href.startsWith('javascript:') &&
+                       !href.startsWith('http') &&
+                       !href.startsWith('//') &&
+                       !a.hasAttribute('download');
+            }
+            window.__showPreloader = function () {
+                var p = document.getElementById('global-preloader');
+                if (p) {
+                    p.style.display = 'flex';
+                    p.style.opacity = '1';
+                }
+            };
+            
+            document.addEventListener('click', function(e){
+                var a = e.target.closest('a');
+                if (a && isInternal(a) && !a.hasAttribute('wire:navigate')) {
+                    __showPreloader();
+                }
+            }, true);
+            
+            window.addEventListener('beforeunload', function(){
+                __showPreloader();
+            });
+        })();
+        </script>
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800">
+
+        <div id="global-preloader"
+             style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+                    background:#ffffff;z-index:9999;transition:opacity .35s ease">
+            <img src="{{ asset('assets/loading/loading_rfe.gif') }}"
+                 alt="Loading"
+                 style="max-width:160px;width:120px;height:auto;image-rendering:-webkit-optimize-contrast;">
+        </div>
+
         <flux:header container class="border-b border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
-            <a href="{{ route('dashboard') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0" wire:navigate>
+            <a href="{{ route('dashboard') }}" class="ms-2 me-5 flex items-center space-x-2 rtl:space-x-reverse lg:ms-0" >
                 <x-app-logo />
             </a>
 
             <flux:navbar class="-mb-px max-lg:hidden">
-                <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" >
                     {{ __('Dashboard') }}
                 </flux:navbar.item>
             </flux:navbar>
@@ -20,9 +61,6 @@
             <flux:spacer />
 
             <flux:navbar class="me-1.5 space-x-0.5 rtl:space-x-reverse py-0!">
-                <flux:tooltip :content="__('Search')" position="bottom">
-                    <flux:navbar.item class="!h-10 [&>div>svg]:size-5" icon="magnifying-glass" href="#" :label="__('Search')" />
-                </flux:tooltip>
                 <flux:tooltip :content="__('Repository')" position="bottom">
                     <flux:navbar.item
                         class="h-10 max-lg:hidden [&>div>svg]:size-5"
@@ -32,15 +70,24 @@
                         :label="__('Repository')"
                     />
                 </flux:tooltip>
-                <flux:tooltip :content="__('Documentation')" position="bottom">
-                    <flux:navbar.item
-                        class="h-10 max-lg:hidden [&>div>svg]:size-5"
-                        icon="book-open-text"
-                        href="https://laravel.com/docs/starter-kits#livewire"
-                        target="_blank"
-                        label="Documentation"
-                    />
-                </flux:tooltip>
+                <flux:dropdown position="top" align="end">
+                    <flux:tooltip :content="__('Translation')" position="bottom">
+                        <flux:navbar.item
+                            class="h-10 max-lg:hidden [&>div>svg]:size-5"
+                            icon="language"
+                            :label="__('Translation')"
+                        />
+                    </flux:tooltip>
+
+                    <flux:menu>
+                        <flux:menu.item  :href="route('language.switch', 'en')">
+                            English
+                        </flux:menu.item>
+                        <flux:menu.item  :href="route('language.switch', 'es')">
+                            Español
+                        </flux:menu.item>
+                    </flux:menu>
+                </flux:dropdown>
             </flux:navbar>
 
             <!-- Desktop User Menu -->
@@ -63,7 +110,7 @@
                                 </span>
 
                                 <div class="grid flex-1 text-start text-sm leading-tight">
-                                    <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
+                                    <span class="truncate font-semibold">{{ auth()->user()->fullName() }}</span>
                                     <span class="truncate text-xs">{{ auth()->user()->email }}</span>
                                 </div>
                             </div>
@@ -73,7 +120,7 @@
                     <flux:menu.separator />
 
                     <flux:menu.radio.group>
-                        <flux:menu.item :href="route('profile.edit')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                        <flux:menu.item :href="route('profile.edit')" icon="cog" >{{ __('Settings') }}</flux:menu.item>
                     </flux:menu.radio.group>
 
                     <flux:menu.separator />
@@ -92,13 +139,13 @@
         <flux:sidebar stashable sticky class="lg:hidden border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
-            <a href="{{ route('dashboard') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" wire:navigate>
+            <a href="{{ route('dashboard') }}" class="ms-1 flex items-center space-x-2 rtl:space-x-reverse" >
                 <x-app-logo />
             </a>
 
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Platform')">
-                    <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
+                    <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" >
                     {{ __('Dashboard') }}
                     </flux:navlist.item>
                 </flux:navlist.group>
@@ -120,5 +167,38 @@
         {{ $slot }}
 
         @fluxScripts
+        @stack('scripts')
+        <script>
+            (function(){
+                const start = performance.now();
+                const MIN_TIME = 600; 
+                function hide() {
+                    const p = document.getElementById('global-preloader');
+                    if(!p) return;
+                    const elapsed = performance.now() - start;
+                    const wait = Math.max(0, MIN_TIME - elapsed);
+                    setTimeout(()=>{
+                        p.style.opacity = '0';
+                        setTimeout(()=>{ p.style.display='none'; }, 380);
+                    }, wait);
+                }
+                if (document.readyState === 'complete') {
+                    hide();
+                } else {
+                    window.addEventListener('load', hide, { once:true });
+                }
+                
+                window.addEventListener('pageshow', function(e){
+                    if (e.persisted) {
+                        const p = document.getElementById('global-preloader');
+                        if (p) p.style.display='none';
+                    }
+                });
+               
+                window.hidePreloader = hide;
+                window.showPreloader = window.__showPreloader;
+            })();
+        </script>
+
     </body>
 </html>

@@ -51,13 +51,12 @@
         <div class="relative w-full h-screen">
             <img src="{{ asset('assets/images/Background.jpg') }}" alt="" class="absolute inset-0 w-full h-full object-cover z-0">
 
-            <!-- Overlay para oscurecer ligeramente la imagen -->
             <div class="absolute inset-0 bg-black/10 z-5"></div>
 
-            <!-- Header con navegación -->
+
             <x-navigation.header />
 
-            <!-- Contenido principal -->
+
             <div class="absolute inset-0 z-10">
                 <div class="flex flex-col justify-center h-full px-8 md:px-16 lg:px-24 mx-auto">
                     <div class="max-w-2xl mx-auto sm:ml-16 md:ml-32 lg:ml-48">
@@ -132,7 +131,7 @@
             </div>
             </a>
             <!-- End Card -->
-            
+
             <!-- Card -->
             <a class="group flex flex-col focus:outline-hidden" href="#">
             <div class="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
@@ -165,17 +164,17 @@
                 <div class="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
                     <a href="#" class="flex justify-center items-center">
                     </a>
-                    <a href="#" class="flex justify-center items-center">                     
+                    <a href="#" class="flex justify-center items-center">
                     </a>
                     <a href="https://www.aeropuertorionegro.co/" class="flex justify-center items-center">
-                       <img src="{{ asset('assets/images/rng.png') }}" alt="">                                      
+                       <img src="{{ asset('assets/images/rng.png') }}" alt="">
                     </a>
                     <a href="https://eldorado.aero/" class="flex justify-center items-center">
-                       <img src="{{ asset('assets/images/bog.svg') }}" alt="">                                                             
+                       <img src="{{ asset('assets/images/bog.svg') }}" alt="">
                     </a>
-                    <a href="#" class="flex justify-center items-center">                                                            
+                    <a href="#" class="flex justify-center items-center">
                     </a>
-                    <a href="#" class="flex justify-center items-center">                                                        
+                    <a href="#" class="flex justify-center items-center">
                     </a>
                 </div>
             </div>
@@ -245,12 +244,12 @@
             </div>
             <!-- End Card -->
         </div>
-        
+
         <script src="https://cdn.jsdelivr.net/npm/@headlessui/react@latest/dist/index.js"></script>
-        <script>
+        <script is:inline>
             window.addEventListener('load', () => {
-                console.log('Cookies accepted:', localStorage.getItem('cookies_accepted')); 
-                
+                console.log('Cookies accepted:', localStorage.getItem('cookies_accepted'));
+
                 if (!localStorage.getItem('cookies_accepted')) {
                     setTimeout(() => {
                         const overlay = document.querySelector('.hs-overlay');
@@ -259,7 +258,7 @@
                         }
                     }, 100);
                 } else {
-                    
+
                     const overlay = document.querySelector('.hs-overlay');
                     if (overlay) {
                         overlay.style.display = 'none';
@@ -270,8 +269,8 @@
             document.getElementById('cookies-accept').addEventListener('click', function() {
                 try {
                     localStorage.setItem('cookies_accepted', 'true');
-                    console.log('Cookies accepted and saved'); 
-                    
+                    console.log('Cookies accepted and saved');
+
                     const overlay = document.querySelector('.hs-overlay');
                     if (overlay) {
                         overlay.style.display = 'none';
@@ -306,6 +305,20 @@
                 gsap.fromTo("#event-date", {opacity: 0, y: -30}, {opacity: 1, y: 0, duration: 1, delay: 1, ease: "power2.out"});
                 gsap.fromTo("#event-link", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 1, delay: 1.5, ease: "power2.out"});
                 gsap.fromTo("#news", {opacity: 0, y: -50}, {opacity: 1, y: 0, duration: 1, delay: 2, ease: "power2.out"});
+
+
+            const loginButton = document.getElementById('login-button');
+                if (loginButton) {
+                    loginButton.addEventListener('click', function() {
+                        const preloader = document.getElementById('preloader');
+                        if (preloader) {
+                            preloader.style.display = 'flex';
+                            setTimeout(() => {
+                                preloader.classList.remove('hidden');
+                            }, 10);
+                        }
+                    });
+                }
             });
 
         </script>

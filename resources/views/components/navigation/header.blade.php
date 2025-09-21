@@ -18,9 +18,9 @@
             <a href="{{ route('language.switch', 'es') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Español</a>
         </div>
       </div>
-      <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-white text-white focus:outline-hidden transition disabled:opacity-50 cursor-pointer hover:bg-white hover:text-black nunito-sans-semibold" aria-label="Login">
+      <a id="login-button" href="{{ route('login') }}" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium text-nowrap rounded-xl border border-white text-white focus:outline-hidden transition disabled:opacity-50 cursor-pointer hover:bg-white hover:text-black nunito-sans-semibold" aria-label="Login">
         {{ __('Login') }}
-      </button>
+      </a>
     </div>
   </nav>
 </header>

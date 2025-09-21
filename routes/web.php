@@ -3,10 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\App;
+use App\Http\Controllers\SsoIvao;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/login', [SsoIvao::class, 'redirectToIVAO']);
+Route::get('/auth/callback', [SsoIvao::class, 'handleCallback'])->name('ivao.callback');
 
 Route::get('/cookies-policy', function () {
     return view('cookiespolicity');

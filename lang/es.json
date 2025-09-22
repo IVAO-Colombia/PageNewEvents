@@ -300,5 +300,6 @@
     "CookiesManage":"Administrar cookies",
     "CookiesDescription":"Al hacer clic en \"Aceptar todas\", usted acepta el uso de todas las cookies.",
     "AirportImports": "Estos aeropuertos son parte de nuestras experiencias de eventos.",
-    "EventsActive": "Eventos Disponibles"
+    "EventsActive": "Eventos Disponibles",
+    "PanelAdmin": "Panel de Administración"
 }

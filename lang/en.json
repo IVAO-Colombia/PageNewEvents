@@ -14,7 +14,8 @@
     "CookiesManage":"Manage cookies",
     "CookiesDescription":"By clicking \"Accept all\", you agree to use of all cookies.",
     "AirportImports": "These airports are part of our event experiences.",
-    "EventsActive": "Available Events"
+    "EventsActive": "Available Events",
+    "PanelAdmin": "Admin Dashboard"
 
 
 }

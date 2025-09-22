@@ -123,6 +123,12 @@
                         <flux:menu.item :href="route('profile.edit')" icon="cog" >{{ __('Settings') }}</flux:menu.item>
                     </flux:menu.radio.group>
 
+                    @if(auth()->check() && auth()->user()->canAccessPanel(app(\Filament\Panel::class)))
+                        <flux:menu.item :href="route('filament.admin.pages.dashboard')" icon="arrow-right-end-on-rectangle">
+                            {{ __('PanelAdmin') }}
+                        </flux:menu.item>
+                    @endif
+
                     <flux:menu.separator />
 
                     <form method="POST" action="{{ route('logout') }}" class="w-full">
@@ -158,9 +164,15 @@
                 {{ __('Repository') }}
                 </flux:navlist.item>
 
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                {{ __('Documentation') }}
-                </flux:navlist.item>
+
+                <flux:navlist.group :heading="__('Languages')">
+                    <flux:navlist.item icon="language" :href="route('language.switch', 'en')">
+                        English
+                    </flux:navlist.item>
+                    <flux:navlist.item icon="language" :href="route('language.switch', 'es')">
+                        Español
+                    </flux:navlist.item>
+                </flux:navlist.group>
             </flux:navlist>
         </flux:sidebar>
 

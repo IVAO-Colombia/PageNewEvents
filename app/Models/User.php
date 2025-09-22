@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasName;
+use Filament\Panel;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser , HasName
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -60,5 +63,22 @@ class User extends Authenticatable
     public function fullName(): string
     {
         return "{$this->firstname} {$this->lastname}";
+    }
+
+    /** Accessor for the user's full name */
+    public function getFilamentName(): string
+    {
+         return trim("{$this->firstname} {$this->lastname}");
+    }
+
+    public function hasPanelAccess(): bool
+    {
+        $adminPermitions = ['CO-EC','CO-EAC','CO-EA1','CO-WM','CO-AWM','CO-WMA1','CO-DIR','CO-ADIR'];
+        return in_array($this->rank_ivao, $adminPermitions);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->hasPanelAccess();
     }
 }

@@ -14,6 +14,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class AirportResource extends Resource
 {
@@ -49,6 +50,17 @@ class AirportResource extends Resource
             'create' => CreateAirport::route('/create'),
             'edit' => EditAirport::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        $staffPermitions = [
+            'CO-WM',
+            'CO-AWM',
+            'CO-WMA1'
+        ];
+
+        return in_array(Auth::user()->rank_ivao, $staffPermitions);
     }
 
 }

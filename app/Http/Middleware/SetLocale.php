@@ -16,11 +16,9 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        logger('SetLocale middleware called');
 
         if (session()->has('locale')) {
             $locale = session()->get('locale');
-            logger('Found locale in session: ' . $locale);
             App::setLocale($locale);
         }
         return $next($request);

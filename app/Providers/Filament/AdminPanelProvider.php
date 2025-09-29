@@ -36,7 +36,9 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups(
                 [
                     'HQ',
+                    'Events',
                     'Settings',
+
                 ]
             )
             ->font('Poppins')

@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\ImageColumn;
 
 class EventsTable
 {
@@ -14,8 +15,10 @@ class EventsTable
     {
         return $table
             ->columns([
-                TextColumn::make('imagen')
-                    ->searchable(),
+                ImageColumn::make('imagen')
+                    ->label('Event Image')
+                    ->circular()
+                    ->width(50),
                 TextColumn::make('name')
                     ->label('Event Name')
                     ->searchable(),
@@ -25,10 +28,6 @@ class EventsTable
                 TextColumn::make('end_time')
                     ->label('End Time')
                     ->dateTime(),
-                TextColumn::make('created_at')
-                    ->dateTime(),
-                TextColumn::make('updated_at')
-                    ->dateTime()
             ])
             ->filters([
                 //

@@ -87,7 +87,7 @@ class EventForm
                     ->description('Provide details about the event')
                     ->columns(2)
                     ->schema([
-                        TextInput::make('title')
+                        TextInput::make('name')
                             ->label('Event Title')
                             ->required()
                             ->columnSpan(2),

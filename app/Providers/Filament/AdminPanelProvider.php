@@ -20,6 +20,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Support\Enums\Width;
 use Filament\Widgets\StatsOverviewWidget;
+use Filament\Actions\Action;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -43,6 +44,11 @@ class AdminPanelProvider extends PanelProvider
 
                 ]
             )
+            ->userMenuItems([
+                Action::make('To back to Website')
+                    ->icon('heroicon-o-arrow-left')
+                    ->url(fn (): string => route('dashboard'))
+            ])
             ->font('Poppins')
             ->maxContentWidth(Width::Full)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')

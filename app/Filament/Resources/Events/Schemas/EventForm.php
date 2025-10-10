@@ -35,6 +35,8 @@ class EventForm
                         ->image()
                         ->maxSize(1024) // 1MB
                         ->directory('events/images')
+                        ->disk('public')
+                        ->visibility('public')
                         ->required()
                         ->columnSpanFull(),
                 ]),
@@ -93,6 +95,25 @@ class EventForm
                             ->columnSpan(2),
                         RichEditor::make('description')
                             ->label('Event Description')
+                            ->helperText('English Description')
+                            ->required()
+                            ->columnSpan(2)
+                            ->toolbarButtons([
+                                'h2',
+                                'h3',
+                                'bold',
+                                'italic',
+                                'underline',
+                                'strike',
+                                'bulletList',
+                                'orderedList',
+                                'link',
+                                'undo',
+                                'redo',
+                            ]),
+                        RichEditor::make('description_es')
+                            ->label('Event Description')
+                            ->helperText('Spanish Description')
                             ->required()
                             ->columnSpan(2)
                             ->toolbarButtons([

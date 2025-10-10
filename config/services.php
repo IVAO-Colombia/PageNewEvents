@@ -39,5 +39,13 @@ return [
         'client_secret' => env('IVAO_CLIENT_SECRET'),
         'redirect' => env('IVAO_REDIRECT_URI'),
     ],
+    'maptiler' =>[
+        'map_id' => env('MAP_ID'),
+        'key' => env('MAPTILER_KEY'),
+        'style' => env('MAP_STYLE'),
+        'initial_zoom' => env('INITIAL_ZOOM', 5),
+        'initial_latitude' => env('INITIAL_LATITUDE'),
+        'initial_longitude' => env('INITIAL_LONGITUDE'),
+    ]
 
 ];

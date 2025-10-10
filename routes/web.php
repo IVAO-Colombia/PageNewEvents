@@ -20,6 +20,12 @@ Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::get('/events/{id}', function ($id) {
+    return view('detailsevent', ['eventId' => $id]);
+})
+->middleware(['auth', 'verified'])
+->name('event.details');
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 

@@ -15,7 +15,26 @@
     "CookiesDescription":"By clicking \"Accept all\", you agree to use of all cookies.",
     "AirportImports": "These airports are part of our event experiences.",
     "EventsActive": "Available Events",
-    "PanelAdmin": "Admin Dashboard"
+    "PanelAdmin": "Admin Dashboard",
+    "EventsPost": "Details Event",
+    "Stats": "Event Statistics",
+    "StatsTotal": "Total Flights",
+    "StatsAvailable": "Available Flights",
+    "StatsNotAvailable": "Unavailable Flights",
+    "Time Remaining": "Time Remaining",
+    "Days": "Days",
+    "Hours": "Hours",
+    "Minutes": "Minutes",
+    "Seconds": "Seconds",
+    "EventDescription": "Event Description",
+    "About This Event": "About This Event",
+    "Event Location": "Event Location",
+    "Reserve Your Spot": "Reserve Your Spot",
+    "Privacy Policy": "Privacy Policy",
+    "Terms of Service": "Terms of Service",
+    "Departments": "Departments System IVAO CO",
+    "All Rights Reserved": "All rights reserved."
+
 
 
 }

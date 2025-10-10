@@ -11,6 +11,7 @@ class Event extends Model
         'imagen',
         'name',
         'description',
+        'description_es',
         'start_time',
         'end_time',
         'name_airport',

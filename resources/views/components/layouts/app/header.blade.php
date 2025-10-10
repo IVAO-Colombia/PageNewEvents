@@ -21,14 +21,14 @@
                     p.style.opacity = '1';
                 }
             };
-            
+
             document.addEventListener('click', function(e){
                 var a = e.target.closest('a');
                 if (a && isInternal(a) && !a.hasAttribute('wire:navigate')) {
                     __showPreloader();
                 }
             }, true);
-            
+
             window.addEventListener('beforeunload', function(){
                 __showPreloader();
             });
@@ -56,6 +56,13 @@
                 <flux:navbar.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" >
                     {{ __('Dashboard') }}
                 </flux:navbar.item>
+                @if(request()->routeIs('event.details'))
+                    <flux:navbar.item icon="document-magnifying-glass"
+                                    :href="route('dashboard')"
+                                    :current="request()->routeIs('event.details')">
+                        {{ __('Events') }}
+                    </flux:navbar.item>
+                @endif
             </flux:navbar>
 
             <flux:spacer />
@@ -154,6 +161,13 @@
                     <flux:navlist.item icon="layout-grid" :href="route('dashboard')" :current="request()->routeIs('dashboard')" >
                     {{ __('Dashboard') }}
                     </flux:navlist.item>
+                    @if(request()->routeIs('event.details'))
+                        <flux:navlist.item icon="document-magnifying-glass"
+                                        :href="route('dashboard')"
+                                        :current="request()->routeIs('event.details')">
+                            {{ __('Events') }}
+                        </flux:navlist.item>
+                    @endif
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -183,7 +197,7 @@
         <script>
             (function(){
                 const start = performance.now();
-                const MIN_TIME = 600; 
+                const MIN_TIME = 600;
                 function hide() {
                     const p = document.getElementById('global-preloader');
                     if(!p) return;
@@ -199,14 +213,14 @@
                 } else {
                     window.addEventListener('load', hide, { once:true });
                 }
-                
+
                 window.addEventListener('pageshow', function(e){
                     if (e.persisted) {
                         const p = document.getElementById('global-preloader');
                         if (p) p.style.display='none';
                     }
                 });
-               
+
                 window.hidePreloader = hide;
                 window.showPreloader = window.__showPreloader;
             })();

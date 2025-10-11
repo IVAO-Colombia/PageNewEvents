@@ -63,6 +63,13 @@
                         {{ __('Events') }}
                     </flux:navbar.item>
                 @endif
+                @if(request()->routeIs('search.bookings'))
+                        <flux:navlist.item icon="magnifying-glass"
+                                        :href="route('search.bookings', ['id' => request()->route('id')])"
+                                        :current="request()->routeIs('search.bookings')">
+                            {{ __('Bookings') }}
+                        </flux:navlist.item>
+                @endif
             </flux:navbar>
 
             <flux:spacer />
@@ -168,6 +175,8 @@
                             {{ __('Events') }}
                         </flux:navlist.item>
                     @endif
+
+
                 </flux:navlist.group>
             </flux:navlist>
 

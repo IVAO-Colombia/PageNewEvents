@@ -26,6 +26,12 @@ Route::get('/events/{id}', function ($id) {
 ->middleware(['auth', 'verified'])
 ->name('event.details');
 
+Route::get('/searchBookings/{id}', function ($id){
+    return view('searchbookings', ['routeId' => $id]);
+})
+->middleware(['auth', 'verified'])
+->name('search.bookings');
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 

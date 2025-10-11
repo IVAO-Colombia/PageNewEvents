@@ -33,8 +33,24 @@
     "Privacy Policy": "Privacy Policy",
     "Terms of Service": "Terms of Service",
     "Departments": "Departments System IVAO CO",
-    "All Rights Reserved": "All rights reserved."
-
+    "All Rights Reserved": "All rights reserved.",
+    "BookingTitle": "Event Booking",
+    "Arrival": "Arrival",
+    "Departure": "Departure",
+    "Carga": "Cargo",
+    "Filter by": "Filter by",
+    "Logo": "Logo",
+    "Flight": "Flight",
+    "Origin": "Origin",
+    "Destination": "Destination",
+    "Aircraft": "Aircraft",
+    "Time": "Time",
+    "Gate": "Gate",
+    "Action": "Action",
+    "Flight Routes": "Flight Routes",
+    "All Types": "All Types",
+    "All Flights": "All Flights",
+    "No routes found matching your criteria.": "No routes found matching your criteria."
 
 
 }

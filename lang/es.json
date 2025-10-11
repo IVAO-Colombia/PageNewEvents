@@ -319,5 +319,21 @@
     "Privacy Policy": "Política de Privacidad",
     "Terms of Service": "Términos de Servicio",
     "Departments": "Departamento de Sistemas IVAO Colombia",
-    "All Rights Reserved": "Todos los derechos reservados."
+    "All Rights Reserved": "Todos los derechos reservados.",
+    "BookingTitle": "Reserva tu lugar para el evento",
+    "Arrival": "Llegada",
+    "Departure": "Salida",
+    "Cargo": "Carga",
+    "Filter by": "Filtrar por",
+    "logo": "Logo",
+    "Flight": "Vuelo",
+    "Origin": "Origen",
+    "Destination": "Destino",
+    "Aircraft": "Aeronave",
+    "Airline": "Aerolínea",
+    "Book": "Reservar",
+    "Flight Routes": "Rutas de Vuelo",
+    "All Types": "Todos los Tipos",
+    "All Flights": "Todos los Vuelos",
+    "No routes found matching your criteria.": "No se encontraron rutas que coincidan con sus criterios."
 }

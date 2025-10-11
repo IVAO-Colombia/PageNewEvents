@@ -69,8 +69,8 @@
                     <div wire:ignore id="map" class="w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg"></div>
                 </div>
 
-                <div id="confetti" class="flex justify-center md:justify-start mt-5 mb-4">
-                        <a href="#" class="px-6 py-3.5 text-base font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <div  class="flex justify-center md:justify-start mt-5 mb-4">
+                        <a href="{{ route('search.bookings', ['id' => $event->name]) }}" class="px-6 py-3.5 text-base font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
                             <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"/>
                             <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"/>
@@ -117,15 +117,4 @@
         document.getElementById("countdown-minutes").textContent = minutes;
         document.getElementById("countdown-seconds").textContent = seconds;
     }, 1000);
-</script>
-
-<script>
-    document.getElementById('confetti').addEventListener('click', function(event) {
-        event.preventDefault();
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 }
-        });
-    });
 </script>

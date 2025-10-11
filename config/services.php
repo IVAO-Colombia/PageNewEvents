@@ -38,6 +38,7 @@ return [
         'client_id' => env('IVAO_CLIENT_ID'),
         'client_secret' => env('IVAO_CLIENT_SECRET'),
         'redirect' => env('IVAO_REDIRECT_URI'),
+        'api_key' => env('IVAO_API_KEY'),
     ],
     'maptiler' =>[
         'map_id' => env('MAP_ID'),

@@ -335,5 +335,13 @@
     "Flight Routes": "Rutas de Vuelo",
     "All Types": "Todos los Tipos",
     "All Flights": "Todos los Vuelos",
-    "No routes found matching your criteria.": "No se encontraron rutas que coincidan con sus criterios."
+    "No routes found matching your criteria.": "No se encontraron rutas que coincidan con sus criterios.",
+    "Booking Details": "Detalles de la Reserva",
+    "Date": "Fecha",
+    "Estimated Time": "Hora Estimada",
+    "Confirm your booking": "Confirma tu reserva",
+    "Enter your details to complete your flight booking.": "Ingrese sus datos para completar la reserva de su vuelo.",
+    "Gate Origin": "Puerta de Origen",
+    "Reserved":"Reservado"
+
 }

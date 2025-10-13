@@ -50,7 +50,18 @@
     "Flight Routes": "Flight Routes",
     "All Types": "All Types",
     "All Flights": "All Flights",
-    "No routes found matching your criteria.": "No routes found matching your criteria."
+    "No routes found matching your criteria.": "No routes found matching your criteria.",
+    "Booking Details": "Booking Details",
+    "Date": "Date",
+    "Airline": "Airline",
+    "Estimated Time": "Estimated Time",
+    "Confirm your booking": "Confirm your booking",
+    "Enter your details to complete your flight booking.": "Enter your details to complete your flight booking.",
+    "Gate Origin": "Gate Origin",
+    "Gate Destination": "Gate Destination",
+    "Estimated Time Arrival": "Estimated Time Arrival",
+    "Estimated Time Departure": "Estimated Time Departure",
+    "Reserved": "Reserved"
 
 
 }

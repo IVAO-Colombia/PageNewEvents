@@ -32,6 +32,14 @@ Route::get('/searchBookings/{id}', function ($id){
 ->middleware(['auth', 'verified'])
 ->name('search.bookings');
 
+Route::get('detailsBooking/{hash}', function($hash) {
+    $id = \Illuminate\Support\Facades\Route::deobfuscateId($hash);
+    $route = \App\Models\Route::findOrFail($id);
+    return view('detailsbooking', compact('route'));
+})
+->middleware(['auth', 'verified'])
+->name('details.booking');
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 

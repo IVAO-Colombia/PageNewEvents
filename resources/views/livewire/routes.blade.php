@@ -158,13 +158,19 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="w-[44px] h-[40px] p-2 rounded-lg {{ $route->type === 'departure' ? 'bg-amber-300' : 'bg-green-500' }} text-center text-white font-bold">
-                                        {{ $route->type === 'departure' ? $route->gate_origin : $route->gate_destination }}
+                                        {{  $route->gate_origin }}
                                     </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <button class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-3 py-1.5 focus:outline-none cursor-pointer">
+                                    @if($route->is_active === false)
+                                    <a class="text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-3 py-1.5 focus:outline-none">
+                                        {{ __('Reserved') }}
+                                    </a>
+                                    @else
+                                    <a href="{{ route('details.booking', ['hash' => \Illuminate\Support\Facades\Route::obfuscateId($route->id)]) }}" class="text-white bg-blue-600 hover:bg-blue-700 font-medium rounded-lg text-sm px-3 py-1.5 focus:outline-none cursor-pointer">
                                         {{ __('Book') }}
-                                    </button>
+                                    </a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty

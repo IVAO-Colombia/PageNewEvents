@@ -70,6 +70,13 @@
                             {{ __('Bookings') }}
                         </flux:navlist.item>
                 @endif
+                @if(request()->routeIs('details.booking'))
+                    <flux:navlist.item icon="document-magnifying-glass"
+                                    :href="route('details.booking', ['hash' => request()->route('hash')])"
+                                    :current="request()->routeIs('details.booking')">
+                        {{ __('Booking Details') }}
+                    </flux:navlist.item>
+                @endif
             </flux:navbar>
 
             <flux:spacer />

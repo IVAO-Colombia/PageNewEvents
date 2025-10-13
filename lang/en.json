@@ -61,7 +61,9 @@
     "Gate Destination": "Gate Destination",
     "Estimated Time Arrival": "Estimated Time Arrival",
     "Estimated Time Departure": "Estimated Time Departure",
-    "Reserved": "Reserved"
+    "Reserved": "Reserved",
+    "My Reservations": "My Reservations",
+    "Controller":"Controller"
 
 
 }

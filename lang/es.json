@@ -342,6 +342,8 @@
     "Confirm your booking": "Confirma tu reserva",
     "Enter your details to complete your flight booking.": "Ingrese sus datos para completar la reserva de su vuelo.",
     "Gate Origin": "Puerta de Origen",
-    "Reserved":"Reservado"
+    "Reserved":"Reservado",
+    "My Reservations": "Mis Reservas",
+    "Controller":"Controlador"
 
 }

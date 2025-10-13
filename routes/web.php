@@ -40,6 +40,18 @@ Route::get('detailsBooking/{hash}', function($hash) {
 ->middleware(['auth', 'verified'])
 ->name('details.booking');
 
+Route::get('/myreservation', function(){
+    return view('reservation');
+})
+->name('reservation')
+->middleware(['auth','verified']);
+
+Route::get('/controller', function(){
+    return view('controller');
+})
+->middleware(['auth','verified'])
+->name('controller');
+
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
 

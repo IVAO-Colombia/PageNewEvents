@@ -77,6 +77,13 @@
                         {{ __('Booking Details') }}
                     </flux:navlist.item>
                 @endif
+                <flux:navbar.item icon="document-text" :href="route('reservation')" :current="request()->routeIs('reservation')" >
+                    {{ __('My Reservations') }}
+                </flux:navbar.item>
+                <flux:navbar.item icon="calendar-days" :href="route('controller')" :current="request()->routeIs('controller')" >
+                    {{ __('Controller') }}
+                </flux:navbar.item>
+
             </flux:navbar>
 
             <flux:spacer />

@@ -63,7 +63,12 @@
     "Estimated Time Departure": "Estimated Time Departure",
     "Reserved": "Reserved",
     "My Reservations": "My Reservations",
-    "Controller":"Controller"
+    "Controller":"Controller",
+    "Manage all your flight bookings": "Manage all your flight bookings",
+    "Go to Siembrief": "Go to Siembrief",
+    "No Reservations Found": "No Reservations Found",
+    "You don't have any active flight reservations yet.": "You don't have any active flight reservations yet."
+
 
 
 }

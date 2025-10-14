@@ -344,6 +344,10 @@
     "Gate Origin": "Puerta de Origen",
     "Reserved":"Reservado",
     "My Reservations": "Mis Reservas",
-    "Controller":"Controlador"
+    "Controller":"Controlador",
+    "Manage all your flight bookings":"Administra todas tus reservas de vuelos.",
+    "Go to Siembrief": "Ir a Siembrief",
+    "No Reservations Found": "No se han encontrado reservas",
+    "You don't have any active flight reservations yet.": "No tienes ninguna reserva de vuelo activa."
 
 }

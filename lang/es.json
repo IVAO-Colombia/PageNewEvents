@@ -359,7 +359,8 @@
     "You have successfully reserved the position": "Has reservado con éxito la posición",
     "Processing...": "Procesando...",
     "Occupied": "Ocupado",
-    "Your ATC rating does not meet the event requirements.": "Tu calificación ATC no cumple con los requisitos del evento."
+    "Your ATC rating does not meet the event requirements.": "Tu calificación ATC no cumple con los requisitos del evento.",
+    "No events available at this time.": "No hay eventos disponibles en este momento."
 
 
 }

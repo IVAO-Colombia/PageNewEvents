@@ -59,18 +59,7 @@
 
             <div class="absolute inset-0 z-10">
                 <div class="flex flex-col justify-center h-full px-8 md:px-16 lg:px-24 mx-auto">
-                    <div class="max-w-2xl mx-auto sm:ml-16 md:ml-32 lg:ml-48">
-                        <h1 id="event-title" class="text-6xl md:text-6xl font-bold text-white leading-tight nunito-sans-extrabold">
-                            2025<br>RFO MEDELLIN
-                        </h1>
-                        <h2 id="event-location" class="text-xl md:text-2xl text-white font-medium mt-2 mb-1 nunito-sans-medium">
-                            Aeropuerto Internacional José María Córdova
-                        </h2>
-                        <p id="event-date" class="text-lg text-white mb-6">DIA AGOSTO 25</p>
-                        <a id="event-link" href="#" class="inline-block px-6 py-2 border border-white text-white rounded-md hover:bg-white hover:text-black transition duration-300 poppins-medium">
-                            {{ __('View More') }}
-                        </a>
-                    </div>
+                   <livewire:newsevents />
                 </div>
             </div>
         </div>
@@ -303,7 +292,6 @@
                 gsap.fromTo("#event-title", {opacity: 0, y: -50}, {opacity: 1, y: 0, duration: 1, ease: "power2.out"});
                 gsap.fromTo("#event-location", {opacity: 0, y: -30}, {opacity: 1, y: 0, duration: 1, delay: 0.5, ease: "power2.out"});
                 gsap.fromTo("#event-date", {opacity: 0, y: -30}, {opacity: 1, y: 0, duration: 1, delay: 1, ease: "power2.out"});
-                gsap.fromTo("#event-link", {opacity: 0, y: -20}, {opacity: 1, y: 0, duration: 1, delay: 1.5, ease: "power2.out"});
                 gsap.fromTo("#news", {opacity: 0, y: -50}, {opacity: 1, y: 0, duration: 1, delay: 2, ease: "power2.out"});
 
 

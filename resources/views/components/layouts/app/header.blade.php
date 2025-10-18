@@ -34,6 +34,7 @@
             });
         })();
         </script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800">
 
@@ -80,7 +81,7 @@
                 <flux:navbar.item icon="document-text" :href="route('reservation')" :current="request()->routeIs('reservation')" >
                     {{ __('My Reservations') }}
                 </flux:navbar.item>
-                <flux:navbar.item icon="calendar-days" :href="route('controller')" :current="request()->routeIs('controller')" >
+                <flux:navbar.item icon="calendar-days" :href="route('controller')" :current="request()->routeIs('controller') || request()->routeIs('bookings.controller')" >
                     {{ __('Controller') }}
                 </flux:navbar.item>
 

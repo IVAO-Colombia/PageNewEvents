@@ -10,6 +10,7 @@ class Event extends Model
     protected $fillable = [
         'imagen',
         'name',
+        'icao',
         'description',
         'description_es',
         'start_time',

@@ -17,6 +17,7 @@ class EventsTable
             ->columns([
                 ImageColumn::make('imagen')
                     ->label('Event Image')
+                    ->disk('public')
                     ->circular()
                     ->width(50),
                 TextColumn::make('name')

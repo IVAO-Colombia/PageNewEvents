@@ -40,6 +40,12 @@ Route::get('detailsBooking/{hash}', function($hash) {
 ->middleware(['auth', 'verified'])
 ->name('details.booking');
 
+Route::get('/bookingsController/{id}', function($id) {
+    return view('bookingcontroller', ['routeId' => $id]);
+})
+->middleware(['auth', 'verified'])
+->name('bookings.controller');
+
 Route::get('/myreservation', function(){
     return view('reservation');
 })

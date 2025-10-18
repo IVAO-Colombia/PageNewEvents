@@ -46,7 +46,7 @@ class EventForm
                     ->columns(3)
                     ->schema([
                         Group::make([
-                            TextInput::make('icao_code')
+                            TextInput::make('icao')
                                 ->label('ICAO Airport Code')
                                 ->helperText('Enter the ICAO code (e.g., KJFK for John F. Kennedy International Airport)')
                                 ->required(),
@@ -54,9 +54,9 @@ class EventForm
                                 ->label('Search Airport')
                                 ->icon('heroicon-o-magnifying-glass')
                                 ->requiresConfirmation()
-                                ->modalDescription(fn (Get $get): string => '¿Want to search for the airport by ICAO code: ' . strtoupper($get('icao_code') ?? 'N/A') . '?')
+                                ->modalDescription(fn (Get $get): string => '¿Want to search for the airport by ICAO code: ' . strtoupper($get('icao') ?? 'N/A') . '?')
                                 ->action(function (Get $get, Set $set) {
-                                    $icao = $get('icao_code');
+                                    $icao = $get('icao');
                                     $airportData = (new self())->getAirportData($icao);
                                     if ($airportData) {
                                         $set('name_airport', $airportData['name']);

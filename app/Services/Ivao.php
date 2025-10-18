@@ -48,6 +48,54 @@ class Ivao
         }
     }
 
+    public function getPositionsAtc($icao)
+    {
+        try {
+            $response = Http::withHeaders([
+                'apiKey' => $this->ApiKey,
+            ])->get('https://api.ivao.aero/v2/positions/search?icao=' . $icao . '&limit=20');
+
+            if ($response->successful()) {
+                return $response->json();
+            } else {
+                Log::error('Error fetching ATC positions', [
+                    'icao' => $icao,
+                    'response' => $response->body(),
+                ]);
+                return null;
+            }
+        } catch (\Exception $e) {
+            Log::error('Error fetching ATC positions', [
+                'icao' => $icao,
+                'error' => $e->getMessage(),
+            ]);
+            return null;
+        }
+    }
+
+    public function verifiedRankAtc($callsing, $vid)
+    {
+        try{
+
+            $response = Http::withHeaders([
+                'apiKey' => $this->ApiKey,
+            ])->get('https://api.ivao.aero/v2/fras/check/' . $callsing . '/' . $vid);
+
+            if($response->status() == 200){
+                return 200;
+            }else
+            {
+                return 404;
+            }
+        }catch (\Exception $e) {
+            Log::error('Error verifying ATC rank', [
+                'callsing' => $callsing,
+                'vid' => $vid,
+                'error' => $e->getMessage(),
+            ]);
+            return null;
+        }
+    }
 
 }
 

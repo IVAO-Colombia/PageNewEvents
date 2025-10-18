@@ -348,6 +348,18 @@
     "Manage all your flight bookings":"Administra todas tus reservas de vuelos.",
     "Go to Siembrief": "Ir a Siembrief",
     "No Reservations Found": "No se han encontrado reservas",
-    "You don't have any active flight reservations yet.": "No tienes ninguna reserva de vuelo activa."
+    "You don't have any active flight reservations yet.": "No tienes ninguna reserva de vuelo activa.",
+    "Designed for controllers who guide the skies of IVAO Colombia.": "Diseñado para los controladores que guían los cielos de IVAO Colombia.",
+    "At IVAO Colombia, we are committed to providing the best possible experience for our controllers.": "En IVAO Colombia, promovemos el talento en el control de tráfico aéreo virtual. Nuestros eventos te ponen a cargo del tráfico, desafiando tus habilidades y llevando tu experiencia de control a nuevas alturas.",
+    "Ready Take Off?": "¿Listo para despegar? Reserva tu frecuencia y prepárate para gestionar el flujo aéreo más intenso del evento.",
+    "Event in progress": "Evento en progreso",
+    "Position": "Posición",
+    "Reserve Your Position": "Reserva tu posición",
+    "Before Booking": "Antes de reservar, asegúrate de que tu calificación ATC cumple con los requisitos del evento. Los controladores solo pueden conectarse durante un máximo de 1 hora durante el evento.",
+    "You have successfully reserved the position": "Has reservado con éxito la posición",
+    "Processing...": "Procesando...",
+    "Occupied": "Ocupado",
+    "Your ATC rating does not meet the event requirements.": "Tu calificación ATC no cumple con los requisitos del evento."
+
 
 }

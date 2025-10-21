@@ -21,6 +21,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Support\Enums\Width;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Actions\Action;
+use App\Filament\Widgets\Bookings;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -59,6 +60,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
                 StatsOverviewWidget::class,
+                Bookings::class,
             ])
             ->middleware([
                 EncryptCookies::class,

@@ -18,12 +18,10 @@
                     $startTime = \Carbon\Carbon::parse($this->bookingId->start_time);
                     $endTime = \Carbon\Carbon::parse($this->bookingId->end_time);
 
-                    // Redondear a la hora anterior
                     $startHour = $startTime->hour;
 
-                    // Redondear a la hora siguiente si hay minutos
                     $endHour = $endTime->minute > 0 ? $endTime->hour + 1 : $endTime->hour;
-                    $endHour = min($endHour, 23); // Asegurarse que no pase de 23
+                    $endHour = min($endHour, 23); 
                 @endphp
 
                 @for ($hour = $startHour; $hour <= $endHour; $hour++)

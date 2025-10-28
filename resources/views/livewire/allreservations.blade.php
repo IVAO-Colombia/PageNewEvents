@@ -72,7 +72,7 @@
                         <div class="pt-4 border-t border-gray-200 dark:border-gray-600">
 
                             <a
-                                href="{{ route('details.booking',['hash' => \Illuminate\Support\Facades\Route::obfuscateId($data['data']['idroute'])]) }}"
+                                href="{{ route('details.booking',['hash' => \Illuminate\Support\Facades\Route::obfuscateId($data['data']['routeid'])]) }}"
                                 class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors cursor-pointer mb-1"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -84,7 +84,7 @@
 
                             <button
                                 type="button"
-                                wire:click="CanceledReservation('{{ $data['data']['idroute'] ?? '' }}')"
+                                wire:click="CanceledReservation('{{ $data['data']['routeid'] ?? '' }}')"
                                 wire:confirm="Are you sure you want to cancel this reservation? This action cannot be undone."
                                 class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors cursor-pointer mb-1"
                             >

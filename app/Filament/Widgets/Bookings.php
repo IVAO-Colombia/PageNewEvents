@@ -16,7 +16,10 @@ use Filament\Tables\Table;
 use Filament\Widgets\TableWidget;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Booking;
-use App\Models\Event;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
+
 
 class Bookings extends TableWidget
 {
@@ -58,7 +61,25 @@ class Bookings extends TableWidget
                     ->searchable(),
             ])
             ->headerActions([
-
+                ExportAction::make()
+                    ->exports([
+                        ExcelExport::make()
+                            ->fromTable()
+                            ->withFilename(fn () => 'bookings-' . date('Y-m-d-His'))
+                            ->withWriterType(\Maatwebsite\Excel\Excel::XLSX)
+                            ->withColumns([
+                                \pxlrbt\FilamentExcel\Columns\Column::make('event.name')
+                                    ->heading('Event'),
+                                \pxlrbt\FilamentExcel\Columns\Column::make('Callsign')
+                                    ->heading('Callsign'),
+                                \pxlrbt\FilamentExcel\Columns\Column::make('Departure')
+                                    ->heading('Departure'),
+                                \pxlrbt\FilamentExcel\Columns\Column::make('Arrival')
+                                    ->heading('Arrival'),
+                                \pxlrbt\FilamentExcel\Columns\Column::make('VID')
+                                    ->heading('VID'),
+                            ])
+                    ])
             ])
             ->recordActions([
 
@@ -66,6 +87,13 @@ class Bookings extends TableWidget
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
+                    ExportBulkAction::make()
+                        ->exports([
+                            ExcelExport::make()
+                                ->fromTable()
+                                ->withFilename(fn () => 'bookings-selected-' . date('Y-m-d-His'))
+                                ->withWriterType(\Maatwebsite\Excel\Excel::XLSX)
+                        ])
                 ]),
             ])
             ->paginated([10, 25, 50, 100]);

@@ -83,6 +83,7 @@ class SsoIvao extends Controller
             Auth::login($user);
 
 
+
             if (Auth::check()) {
                 Log::info('Usuario autenticado correctamente', ['user_id' => $user->id]);
                 return redirect()->intended('/dashboard');

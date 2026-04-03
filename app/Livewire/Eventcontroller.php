@@ -11,9 +11,9 @@ class Eventcontroller extends Component
 
     public function mount()
     {
-        $this->events = Event::all();
+        $this->events = Event::where('is_active', true)->get();
     }
-    
+
     public function render()
     {
         return view('livewire.eventcontroller', [

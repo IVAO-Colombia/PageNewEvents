@@ -1,6 +1,8 @@
 <?php
+
 namespace App\Livewire;
 
+use App\Models\Event;
 use Livewire\Component;
 use App\Models\Route as RouteModel;
 use Livewire\WithPagination;
@@ -13,7 +15,7 @@ class Routes extends Component
     public $typeFilter = 'all';
     public $cargoFilter = false;
     public $scopeFilter = 'all';
-    public $eventId = null;
+    public $event;
     public $activeFilters = [];
 
     protected $queryString = [
@@ -23,9 +25,9 @@ class Routes extends Component
         'searchTerm' => ['except' => '']
     ];
 
-    public function mount($eventId = null)
+    public function mount(Event $event)
     {
-        $this->eventId = $eventId;
+        $this->event = $event;
         $this->updateActiveFilters();
     }
 
@@ -94,8 +96,8 @@ class Routes extends Component
         $query = RouteModel::query();
 
         // Filtrar por evento si existe
-        if ($this->eventId) {
-            $query->where('event_id', $this->eventId);
+        if ($this->event) {
+            $query->where('event_id', $this->event->id);
         }
 
         // Filtrar por tipo (Arrival/Departure)
@@ -117,13 +119,13 @@ class Routes extends Component
         if (!empty($this->searchTerm)) {
             $query->where(function ($q) {
                 $q->where('flight_number', 'like', '%' . $this->searchTerm . '%')
-                  ->orWhere('airline', 'like', '%' . $this->searchTerm . '%')
-                  ->orWhere('origin', 'like', '%' . $this->searchTerm . '%')
-                  ->orWhere('destination', 'like', '%' . $this->searchTerm . '%')
-                  ->orWhere('name_airport_origin', 'like', '%' . $this->searchTerm . '%')
-                  ->orWhere('name_airport_destination', 'like', '%' . $this->searchTerm . '%')
-                  ->orWhere('iato_code_origin', 'like', '%' . $this->searchTerm . '%')
-                  ->orWhere('iato_code_destination', 'like', '%' . $this->searchTerm . '%');
+                    ->orWhere('airline', 'like', '%' . $this->searchTerm . '%')
+                    ->orWhere('origin', 'like', '%' . $this->searchTerm . '%')
+                    ->orWhere('destination', 'like', '%' . $this->searchTerm . '%')
+                    ->orWhere('name_airport_origin', 'like', '%' . $this->searchTerm . '%')
+                    ->orWhere('name_airport_destination', 'like', '%' . $this->searchTerm . '%')
+                    ->orWhere('iato_code_origin', 'like', '%' . $this->searchTerm . '%')
+                    ->orWhere('iato_code_destination', 'like', '%' . $this->searchTerm . '%');
             });
         }
 

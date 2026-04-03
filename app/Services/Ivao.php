@@ -22,10 +22,10 @@ class Ivao
     public function getImagenAirlines($iaco)
     {
 
-        try{
+        try {
             $response = Http::withHeaders([
-                  'apiKey' => $this->ApiKey,
-            ])->get('https://api.ivao.aero/v2/airlines/' . $iaco.'/logo');
+                'apiKey' => $this->ApiKey,
+            ])->get('https://api.ivao.aero/v2/airlines/' . $iaco . '/logo');
 
             if ($response->successful()) {
                 $base64Image = 'data:image/png;base64,' . base64_encode($response->body());
@@ -75,19 +75,18 @@ class Ivao
 
     public function verifiedRankAtc($callsing, $vid)
     {
-        try{
+        try {
 
             $response = Http::withHeaders([
                 'apiKey' => $this->ApiKey,
             ])->get('https://api.ivao.aero/v2/fras/check/' . $callsing . '/' . $vid);
 
-            if($response->status() == 200){
+            if ($response->status() == 200) {
                 return 200;
-            }else
-            {
+            } else {
                 return 404;
             }
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             Log::error('Error verifying ATC rank', [
                 'callsing' => $callsing,
                 'vid' => $vid,
@@ -96,7 +95,4 @@ class Ivao
             return null;
         }
     }
-
 }
-
-

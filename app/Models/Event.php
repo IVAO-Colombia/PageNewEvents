@@ -9,6 +9,8 @@ class Event extends Model
 {
     protected $fillable = [
         'imagen',
+        'slug',
+        'is_active',
         'name',
         'icao',
         'description',
@@ -23,6 +25,11 @@ class Event extends Model
     protected $dates = [
         'start_time',
         'end_time',
+    ];
+
+    protected $casts = [
+        'slug' => 'string',
+        'is_active' => 'boolean',
     ];
 
     public function routes(): HasMany

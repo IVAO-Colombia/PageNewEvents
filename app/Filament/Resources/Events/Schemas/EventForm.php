@@ -14,9 +14,11 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Notifications\Notification;
 use PHPUnit\Framework\TestStatus\Notice;
 use App\Models\Airport;
+use Filament\Forms\Components\Toggle;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Utilities\Set;
+use Illuminate\Support\Str;
 
 class EventForm
 {
@@ -25,21 +27,21 @@ class EventForm
         return $schema
             ->components([
                 Section::make('Image Upload')
-                ->columnSpanFull()
-                ->columns(1)
-                ->maxWidth('full')
-                ->description('Upload an image for the event')
-                ->schema([
-                    FileUpload::make('imagen')
-                        ->label('Event Image')
-                        ->image()
-                        ->maxSize(1024) // 1MB
-                        ->directory('events/images')
-                        ->disk('public')
-                        ->visibility('public')
-                        ->required()
-                        ->columnSpanFull(),
-                ]),
+                    ->columnSpanFull()
+                    ->columns(1)
+                    ->maxWidth('full')
+                    ->description('Upload an image for the event')
+                    ->schema([
+                        FileUpload::make('imagen')
+                            ->label('Event Image')
+                            ->image()
+                            ->maxSize(1024) // 1MB
+                            ->directory('events/images')
+                            ->disk('public')
+                            ->visibility('public')
+                            ->required()
+                            ->columnSpanFull(),
+                    ]),
                 Section::make('Location Details')
                     ->columnSpanFull()
                     ->description('Provide location details for the event')
@@ -54,7 +56,7 @@ class EventForm
                                 ->label('Search Airport')
                                 ->icon('heroicon-o-magnifying-glass')
                                 ->requiresConfirmation()
-                                ->modalDescription(fn (Get $get): string => '¿Want to search for the airport by ICAO code: ' . strtoupper($get('icao') ?? 'N/A') . '?')
+                                ->modalDescription(fn(Get $get): string => '¿Want to search for the airport by ICAO code: ' . strtoupper($get('icao') ?? 'N/A') . '?')
                                 ->action(function (Get $get, Set $set) {
                                     $icao = $get('icao');
                                     $airportData = (new self())->getAirportData($icao);
@@ -92,7 +94,13 @@ class EventForm
                         TextInput::make('name')
                             ->label('Event Title')
                             ->required()
-                            ->columnSpan(2),
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
+                        TextInput::make('slug')
+                            ->label('Event Slug')
+                            ->readOnly()
+                            ->helperText('Unique identifier for the event, auto-generated from the title'),
+
                         RichEditor::make('description')
                             ->label('Event Description')
                             ->helperText('English Description')
@@ -135,11 +143,15 @@ class EventForm
                         DateTimePicker::make('end_time')
                             ->label('End Time')
                             ->required(),
-                        ]),
+                        Toggle::make('is_active')
+                            ->label('Is Active')
+                            ->helperText('Toggle to activate or deactivate the event')
+                            ->default(true),
+                    ]),
             ]);
     }
 
-    public function getAirportData($icao): ? array
+    public function getAirportData($icao): ?array
     {
         if (empty($icao)) {
             Notification::make()
@@ -162,6 +174,5 @@ class EventForm
                 ->send();
             return null;
         }
-
     }
 }

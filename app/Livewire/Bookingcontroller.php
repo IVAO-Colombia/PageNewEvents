@@ -11,20 +11,19 @@ use Carbon\Carbon;
 
 class Bookingcontroller extends Component
 {
-    public $bookingId;
+    public $event;
     public $reservedSlots = [];
 
-    public function mount($bookingId)
+    public function mount(Event $event)
     {
-        $this->bookingId = Event::where('name', $bookingId)->first();
-
+        $this->event = $event;
         $this->loadReservedSlots();
     }
 
 
     private function loadReservedSlots()
     {
-        $controllers = Controller::where('event_id', $this->bookingId->id)->get();
+        $controllers = Controller::where('event_id', $this->event->id)->get();
 
         foreach ($controllers as $controller) {
             $position = $controller->position;
@@ -68,9 +67,9 @@ class Bookingcontroller extends Component
         }
 
         $statusrol = $ivao->verifiedRankAtc($position, $vid);
-        if($statusrol === 200) {
+        if ($statusrol === 200) {
             Controller::create([
-                'event_id' => $this->bookingId->id,
+                'event_id' => $this->event->id,
                 'vid' => $vid,
                 'position' => $position,
                 'start' => $date_start,
@@ -100,14 +99,14 @@ class Bookingcontroller extends Component
             return;
         }
 
-        Controller::where('event_id', $this->bookingId->id)
+        Controller::where('event_id', $this->event->id)
             ->where('position', $position)
             ->where('start', $date_start)
             ->where('vid', Auth::user()->vid_ivao)
             ->delete();
 
 
-        $deleted = Controller::where('event_id', $this->bookingId->id)
+        $deleted = Controller::where('event_id', $this->event->id)
             ->where('position', $position)
             ->where('vid', Auth::user()->vid_ivao)
             ->delete();
@@ -123,7 +122,7 @@ class Bookingcontroller extends Component
     public function render()
     {
         return view('livewire.bookingcontroller', [
-            'bookingId' => $this->bookingId
+            'event' => $this->event
         ]);
     }
 };

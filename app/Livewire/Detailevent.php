@@ -15,17 +15,15 @@ class Detailevent extends Component
 
     public $trasanslation;
 
-    public function mount($eventId)
+    public function mount(Event $event)
     {
-        $this->event = Event::where('name', $eventId)->firstOrFail();
 
-        $eventId = $this->event->id;
+        $this->event = $event;
 
-        $startEvent = $this->event->start_time;
-
-        $this->stats = $this->getEventStats($eventId);
+        $this->stats = $this->getEventStats($event->id);
 
         $locale = app()->getLocale();
+
         if ($locale == 'es') {
             $this->trasanslation = $this->event->description_es;
         } else {

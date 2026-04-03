@@ -7,7 +7,7 @@ use App\Models\Event;
 
 class Newsevents extends Component
 {
-    public $events;
+    public $event;
 
     public function mount()
     {
@@ -16,21 +16,14 @@ class Newsevents extends Component
 
     private function eventsNow()
     {
-        $this->events = Event::where(function($query) {
-                $query->whereDate('start_time', '<=', now())
-                    ->whereDate('end_time', '>=', now());
-            })
-            ->orWhere(function($query) {
-                $query->whereDate('start_time', '>', now())
-                    ->whereDate('start_time', '<=', now()->addDays(7));
-            })
-            ->orderBy('start_time', 'asc')
-            ->get();
+        $this->event = Event::where('start_time', '>=', now())
+            ->where('is_active', '1')
+            ->first();
     }
     public function render()
     {
         return view('livewire.newsevents', [
-            'events' => $this->events
+            'event' => $this->event
         ]);
     }
 }

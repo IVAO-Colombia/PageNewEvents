@@ -52,6 +52,7 @@ class MapViewer extends Component
 
             return [
                 'id' => $e->id,
+                'slug' => $e->slug,
                 'title' => $e->title ?? $e->name ?? '',
                 'description' => Str::limit($description, 250) ?? '',
                 'date' => $date,
@@ -62,14 +63,12 @@ class MapViewer extends Component
                 ],
             ];
         })->toArray();
-
-
     }
 
 
     private function getEvents()
     {
-        return Event::all();
+        return Event::where('is_active', true)->get();
     }
 
     public function render()

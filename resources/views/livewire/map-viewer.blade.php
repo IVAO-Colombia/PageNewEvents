@@ -1,17 +1,22 @@
 <div class="relative h-full w-full">
     <!-- Botón del menú -->
-    <button id="toggle-menu" class="absolute top-4 left-4 z-10 bg-white p-2 rounded-md shadow-lg hover:bg-gray-100 cursor-pointer" onclick="toggleMenu()">
+    <button id="toggle-menu"
+        class="absolute top-4 left-4 z-10 bg-white p-2 rounded-md shadow-lg hover:bg-gray-100 cursor-pointer"
+        onclick="toggleMenu()">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
     </button>
 
     <!-- Menú lateral -->
-    <div id="events-menu" class="absolute top-0 left-0 z-20 bg-white w-80 h-full shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto ">
+    <div id="events-menu"
+        class="absolute top-0 left-0 z-20 bg-white w-80 h-full shadow-xl transform -translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto ">
         <div class="p-4 border-b border-gray-200">
             <h2 class="text-xl font-semibold text-gray-800 poppins-bold">{{ __('EventsActive') }}</h2>
-            <button id="close-menu" class="absolute top-4 right-4 text-gray-600 hover:text-gray-800 cursor-pointer" onclick="toggleMenu()" style="display: none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button id="close-menu" class="absolute top-4 right-4 text-gray-600 hover:text-gray-800 cursor-pointer"
+                onclick="toggleMenu()" style="display: none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
@@ -28,7 +33,6 @@
     <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.min.js"></script>
 
     <script>
-
         function toggleMenu() {
             const menu = document.getElementById('events-menu');
             const closemenu = document.getElementById('close-menu');
@@ -131,7 +135,7 @@
             window.showEventDetails = function(eventId) {
                 const event = events.find(e => e.id === eventId);
                 if (!event) return;
-                const eventUrl = `/events/${event.title}`;
+                const eventUrl = `/events/${event.slug}`;
                 window.location.href = eventUrl;
             }
 
@@ -173,9 +177,11 @@
         .marker {
             transition: transform 0.2s;
         }
+
         .marker:hover {
             transform: scale(1.2);
         }
+
         .mapboxgl-popup-content {
             padding: 10px;
             border-radius: 8px;

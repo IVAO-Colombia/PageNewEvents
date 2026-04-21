@@ -11,52 +11,30 @@ use Illuminate\Support\Facades\Auth;
 class Allreservations extends Component
 {
 
-    public $reserves;
+    public $bookings;
+    public $user;
 
 
     public function mount()
     {
-        $this->reserves = $this->getinformationReserved();
-    }
+        $this->user = Auth::user();
 
-    private function getinformationReserved()
-    {
-        $user = Auth::user();
-        $iduser = Booking::where('VID', $user->vid_ivao)->first();
-
-
-        if (!$iduser) {
-            return null;
+        if (!Auth::check()) {
+            return redirect()->route('home');
         }
 
-
-        $idevent = Event::where('id', $iduser->Name_event)->first();
-        $idroute = Route::where('id', $iduser->route_id)->first();
-
-        $result = [
-            'data' => [
-                'routeid'   => $iduser->route_id,
-                'nameevent' => $idevent->name,
-                'dateevent' => $idevent->start_time,
-                'departure' => $idroute->origin,
-                'arrival'   => $idroute->destination,
-                'callsing'  => $iduser->Callsign,
-            ]
-        ];
-
-        return $result;
+        $this->bookings = Booking::where('VID', $this->user->vid_ivao)->get();
     }
 
 
-    public function CanceledReservation($routeid)
+    public function CanceledReservation($routeId)
     {
-        $user = Auth::user();
-        Booking::where('route_id', $routeid)
-            ->where('VID', $user->vid_ivao)
+        Booking::where('route_id', $routeId)
+            ->where('VID', $this->user->vid_ivao)
             ->delete();
 
-        Route::where('id', $routeid)
-        ->update(['is_active' => true]);
+        Route::where('id', $routeId)
+            ->update(['is_active' => true]);
 
         $this->mount();
     }
@@ -64,8 +42,8 @@ class Allreservations extends Component
 
     public function render()
     {
-        return view('livewire.allreservations',[
-            'data' => $this->reserves
+        return view('livewire.allreservations', [
+            'bookings' => $this->bookings
         ]);
     }
 }

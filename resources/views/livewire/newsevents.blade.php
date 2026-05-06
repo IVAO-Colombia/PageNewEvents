@@ -1,3 +1,4 @@
+@if ($event)
 <div class="relative w-full h-screen"
     style=" background-image: url('{{ asset('storage/'.$event->imagen) }}'); background-size: cover; background-position: center; ">
 
@@ -86,3 +87,16 @@
     }, 1000);
     </script>
 </div>
+@else
+
+<div class="relative w-full h-[60vh] bg-[#0D2C99] flex items-center justify-center">
+
+    <x-navigation.header />
+
+    <div class="text-center">
+        <h1 class="text-6xl font-bold text-white mb-4">{{ __('No events available at this time') }}</h1>
+        <p class="text-xl text-gray-300">{{ __('Please check back later for upcoming events.') }}</p>
+    </div>
+</div>
+
+@endif

@@ -29,7 +29,7 @@ class Bookings extends TableWidget
     public function table(Table $table): Table
     {
         return $table
-            ->query(fn (): Builder => Booking::query()->latest())
+            ->query(fn(): Builder => Booking::query()->latest())
             ->columns([
                 TextColumn::make('event.name')
                     ->label('Event'),
@@ -64,8 +64,7 @@ class Bookings extends TableWidget
                 ExportAction::make()
                     ->exports([
                         ExcelExport::make()
-                            ->fromTable()
-                            ->withFilename(fn () => 'bookings-' . date('Y-m-d-His'))
+                            ->withFilename(fn() => 'bookings-' . date('Y-m-d-His'))
                             ->withWriterType(\Maatwebsite\Excel\Excel::XLSX)
                             ->withColumns([
                                 \pxlrbt\FilamentExcel\Columns\Column::make('event.name')
@@ -81,9 +80,7 @@ class Bookings extends TableWidget
                             ])
                     ])
             ])
-            ->recordActions([
-
-            ])
+            ->recordActions([])
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
@@ -91,7 +88,7 @@ class Bookings extends TableWidget
                         ->exports([
                             ExcelExport::make()
                                 ->fromTable()
-                                ->withFilename(fn () => 'bookings-selected-' . date('Y-m-d-His'))
+                                ->withFilename(fn() => 'bookings-selected-' . date('Y-m-d-His'))
                                 ->withWriterType(\Maatwebsite\Excel\Excel::XLSX)
                         ])
                 ]),

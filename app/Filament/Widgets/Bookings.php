@@ -77,6 +77,10 @@ class Bookings extends TableWidget
                                     ->heading('Arrival'),
                                 \pxlrbt\FilamentExcel\Columns\Column::make('VID')
                                     ->heading('VID'),
+                                \pxlrbt\FilamentExcel\Columns\Column::make('route.hourOrigin')
+                                    ->heading('Hour Origin'),
+                                \pxlrbt\FilamentExcel\Columns\Column::make('route.hourDestination')
+                                    ->heading('Hour Destination'),
                             ])
                     ])
             ])

@@ -120,8 +120,8 @@
                             <th scope="col" class="px-6 py-3">{{ __('Logo') }}</th>
                             <th scope="col" class="px-6 py-3">{{ __('Flight') }}</th>
                             <th scope="col" class="px-6 py-3">{{ __('Origin') }}</th>
-                            <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ __('Destination') }}</th>
-                            <th scope="col" class="px-6 py-3 hidden lg:table-cell">{{ __('Aircraft') }}</th>
+                            <th scope="col" class="px-6 py-3">{{ __('Destination') }}</th>
+                            <th scope="col" class="px-6 py-3">{{ __('Aircraft') }}</th>
                             <th scope="col" class="px-6 py-3">{{ __('Departure Time') }}</th>
                             <th scope="col" class="px-6 py-3">{{ __('Arrival Time') }}</th>
                             <th scope="col" class="px-6 py-3">{{ __('Gate') }}</th>
@@ -144,9 +144,9 @@
                                 {{ $route->flight_number }}
                             </th>
                             <td class="px-6 py-4">{{ $route->iato_code_origin ?? $route->origin }}</td>
-                            <td class="px-6 py-4 hidden md:table-cell">{{ $route->iato_code_destination ??
+                            <td class="px-6 py-4">{{ $route->iato_code_destination ??
                                 $route->destination }}</td>
-                            <td class="px-6 py-4 hidden lg:table-cell">{{ $route->aircraft_type }}</td>
+                            <td class="px-6 py-4">{{ $route->aircraft_type }}</td>
                             <td class="px-6 py-4">
                                 {{ \Carbon\Carbon::parse($route->hourOrigin)->format('H:i') }} UTC
                             </td>
